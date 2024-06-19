@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, Alert } from 'react-native';
 import React, {useState} from 'react';
 
 import { useForm, Controller} from 'react-hook-form';
@@ -50,7 +50,7 @@ export default function Formulario() {
         name="tipoDeRisco"
         render={({field: { onChange, onBlur, value}}) =>(
           <TextInput
-          style={styles.input}
+          style={styles.inputRisco}
           onChangeText={onChange}
           onBlur={onBlur}
           value={value}
@@ -58,13 +58,12 @@ export default function Formulario() {
         />
       )}
       />
-    
 
-    
-
-    <TouchableOpacity style={styles.button} onPress={handleSubmit(handleForm)}>
-        <Text style={styles.buttonText}>Enviar Formulário</Text>
-    </TouchableOpacity>
+    <Button 
+        title="Enviar Formulário"
+        color="#FFA500"
+        onPress={() => Alert.alert('Formulário de ocorrência enviado com sucesso!')}
+      />
     </View>
   );
 }
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight:'bold',
-    marginBottom: 100
+    marginBottom: 40
   },
   input:{
     borderStyle: 'solid',
@@ -107,25 +106,17 @@ const styles = StyleSheet.create({
     width: '80%',
     textAlign: 'center'
   },
-  buttonText:{
-    alignSelf: 'center',
-    padding:10,
-    color: 'white',
-    fontWeight:'bold',
-    fontSize: 15,
-  },
-  button:{
-    marginTop: 30,
+  inputRisco:{
     borderStyle: 'solid',
-    backgroundColor: 'orange',
+    backgroundColor: 'white',
     borderColor: 'orange',
     borderWidth: 2,
     borderRadius: 4,
+    marginBottom: 20,
     height: 40,
     margin: 12,
-    width: '60%'
-
-  }
-
-
+    padding:10,
+    width: '80%',
+    textAlign: 'center'
+  },
 });
